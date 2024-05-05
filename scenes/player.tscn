@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bhu5rgva83pre" path="res://assets/spritesheets/player.png" id="1_h5nan"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fxkve"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_oh7sm"]
 atlas = ExtResource("1_h5nan")
 region = Rect2(0, 64, 33, 32)
@@ -177,11 +175,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fxkve"]
+radius = 8.0
+height = 22.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_fxkve")
+[node name="Player" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eipqb")
 animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("CapsuleShape2D_fxkve")
