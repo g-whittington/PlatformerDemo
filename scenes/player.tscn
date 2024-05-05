@@ -191,3 +191,5 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 6)
 shape = SubResource("CapsuleShape2D_fxkve")
+
+[node name="Camera2D" type="Camera2D" parent="."]
