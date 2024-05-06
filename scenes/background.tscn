@@ -16,6 +16,7 @@ scale = Vector2(3, 2.70417)
 texture = ExtResource("1_oi6mc")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
 motion_mirroring = Vector2(1232, 0)
 
 [node name="Middle" type="Sprite2D" parent="ParallaxLayer2"]
@@ -26,12 +27,9 @@ texture = ExtResource("3_opkbw")
 position = Vector2(264, 464)
 texture = ExtResource("3_opkbw")
 
-[node name="Middle3" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(440, 464)
-texture = ExtResource("3_opkbw")
-
 [node name="Middle4" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(616, 464)
+position = Vector2(528, 462)
+scale = Vector2(2, 1.03261)
 texture = ExtResource("3_opkbw")
 
 [node name="Middle5" type="Sprite2D" parent="ParallaxLayer2"]
@@ -39,9 +37,11 @@ position = Vector2(792, 464)
 texture = ExtResource("3_opkbw")
 
 [node name="Middle6" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(968, 464)
+position = Vector2(948, 464)
+scale = Vector2(0.772727, 1)
 texture = ExtResource("3_opkbw")
 
 [node name="Middle7" type="Sprite2D" parent="ParallaxLayer2"]
-position = Vector2(1144, 464)
+position = Vector2(1124, 464)
+scale = Vector2(1.22727, 1)
 texture = ExtResource("3_opkbw")
