@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://boaxno85g654k"]
+[gd_scene load_steps=21 format=3 uid="uid://boaxno85g654k"]
 
 [ext_resource type="Texture2D" uid="uid://cm03t6p3xykw6" path="res://assets/spritesheets/enemy-deadth.png" id="1_5e5mu"]
+[ext_resource type="Script" path="res://scripts/frog_enemy.gd" id="1_o2rti"]
 [ext_resource type="Texture2D" uid="uid://dtjqlfhvhqsp4" path="res://assets/spritesheets/frog-idle.png" id="1_w6420"]
 [ext_resource type="Texture2D" uid="uid://cul5brden2m76" path="res://assets/spritesheets/frog-jump.png" id="2_bokh2"]
 
@@ -113,11 +114,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypxia"]
-radius = 11.0
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0xfu"]
+size = Vector2(25, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6w3d"]
+radius = 74.027
 
 [node name="FrogEnemy" type="CharacterBody2D"]
+script = ExtResource("1_o2rti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
@@ -125,5 +129,12 @@ sprite_frames = SubResource("SpriteFrames_kuu1p")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_ypxia")
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_w0xfu")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_r6w3d")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
