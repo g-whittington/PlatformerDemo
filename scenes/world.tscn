@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgojwevuanicw"]
+[gd_scene load_steps=8 format=3 uid="uid://cgojwevuanicw"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_2olxm"]
 [ext_resource type="PackedScene" uid="uid://bxjand2ywo2w0" path="res://scenes/player.tscn" id="1_3i6sh"]
 [ext_resource type="Texture2D" uid="uid://bdphwahi8vl21" path="res://assets/environment/tileset.png" id="1_8l7i8"]
 [ext_resource type="Texture2D" uid="uid://dbt1wfxjohv5l" path="res://assets/environment/Background/back.png" id="2_bv6fa"]
+[ext_resource type="PackedScene" uid="uid://boaxno85g654k" path="res://scenes/frog_enemy.tscn" id="5_e6aos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6nqh"]
 texture = ExtResource("1_8l7i8")
@@ -488,3 +489,6 @@ texture = ExtResource("2_bv6fa")
 
 [node name="Player" parent="." instance=ExtResource("1_3i6sh")]
 position = Vector2(512, 304)
+
+[node name="FrogEnemy" parent="." instance=ExtResource("5_e6aos")]
+position = Vector2(266, 346)
