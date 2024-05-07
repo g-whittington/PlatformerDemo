@@ -38,7 +38,15 @@ func _on_player_detection_body_exited(body):
 
 func _on_player_death_body_entered(body):
 	if body.name == "Player":
-		chase = false
-		animated_sprite.play("death")
-		await animated_sprite.animation_finished
-		self.queue_free()
+		death()
+
+func _on_player_collison_body_entered(body):
+	if body.name == "Player":
+		body.health -= 3
+		death()
+
+func death():
+	chase = false
+	animated_sprite.play("death")
+	await animated_sprite.animation_finished
+	self.queue_free()

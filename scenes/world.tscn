@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgojwevuanicw"]
+[gd_scene load_steps=9 format=3 uid="uid://cgojwevuanicw"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_2olxm"]
 [ext_resource type="PackedScene" uid="uid://bxjand2ywo2w0" path="res://scenes/player.tscn" id="1_3i6sh"]
 [ext_resource type="Texture2D" uid="uid://bdphwahi8vl21" path="res://assets/environment/tileset.png" id="1_8l7i8"]
 [ext_resource type="Texture2D" uid="uid://dbt1wfxjohv5l" path="res://assets/environment/Background/back.png" id="2_bv6fa"]
 [ext_resource type="PackedScene" uid="uid://boaxno85g654k" path="res://scenes/frog_enemy.tscn" id="5_e6aos"]
+[ext_resource type="Script" path="res://scripts/HP.gd" id="6_2d6hr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6nqh"]
 texture = ExtResource("1_8l7i8")
@@ -496,3 +497,29 @@ position = Vector2(512, 304)
 
 [node name="FrogEnemy" parent="Mobs" instance=ExtResource("5_e6aos")]
 position = Vector2(266, 346)
+
+[node name="FrogEnemy2" parent="Mobs" instance=ExtResource("5_e6aos")]
+position = Vector2(119, 314)
+
+[node name="FrogEnemy3" parent="Mobs" instance=ExtResource("5_e6aos")]
+position = Vector2(713, 250)
+
+[node name="FrogEnemy4" parent="Mobs" instance=ExtResource("5_e6aos")]
+position = Vector2(415, 325)
+
+[node name="FrogEnemy5" parent="Mobs" instance=ExtResource("5_e6aos")]
+position = Vector2(877, 248)
+
+[node name="FrogEnemy6" parent="Mobs" instance=ExtResource("5_e6aos")]
+position = Vector2(614, 336)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HP" type="Label" parent="UI"]
+offset_left = 21.0
+offset_right = 61.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "HP:"
+script = ExtResource("6_2d6hr")

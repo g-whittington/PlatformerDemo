@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://boaxno85g654k"]
+[gd_scene load_steps=24 format=3 uid="uid://boaxno85g654k"]
 
 [ext_resource type="Texture2D" uid="uid://cm03t6p3xykw6" path="res://assets/spritesheets/enemy-deadth.png" id="1_5e5mu"]
 [ext_resource type="Script" path="res://scripts/frog_enemy.gd" id="1_o2rti"]
@@ -131,7 +131,10 @@ size = Vector2(25, 20)
 radius = 149.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6xes"]
-size = Vector2(10, 11)
+size = Vector2(17, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhh1e"]
+size = Vector2(27, 11)
 
 [node name="FrogEnemy" type="CharacterBody2D"]
 script = ExtResource("1_o2rti")
@@ -139,7 +142,7 @@ script = ExtResource("1_o2rti")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_kuu1p")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -147,6 +150,7 @@ position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_w0xfu")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_r6w3d")
@@ -154,9 +158,16 @@ shape = SubResource("CircleShape2D_r6w3d")
 [node name="PlayerDeath" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
-position = Vector2(0, -2)
+position = Vector2(0.5, -4.5)
 shape = SubResource("RectangleShape2D_w6xes")
+
+[node name="PlayerCollison" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollison"]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_mhh1e")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]
+[connection signal="body_entered" from="PlayerCollison" to="." method="_on_player_collison_body_entered"]
