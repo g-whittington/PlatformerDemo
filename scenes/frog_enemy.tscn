@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://boaxno85g654k"]
+[gd_scene load_steps=23 format=3 uid="uid://boaxno85g654k"]
 
 [ext_resource type="Texture2D" uid="uid://cm03t6p3xykw6" path="res://assets/spritesheets/enemy-deadth.png" id="1_5e5mu"]
 [ext_resource type="Script" path="res://scripts/frog_enemy.gd" id="1_o2rti"]
@@ -30,6 +30,10 @@ atlas = ExtResource("1_5e5mu")
 region = Rect2(200, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uj7r5"]
+atlas = ExtResource("1_w6420")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqo80"]
 atlas = ExtResource("1_w6420")
 region = Rect2(0, 0, 35, 32)
 
@@ -78,13 +82,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ul0g")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uj7r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqo80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqo80")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q8l0h")
@@ -97,7 +107,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -118,7 +128,10 @@ animations = [{
 size = Vector2(25, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6w3d"]
-radius = 74.027
+radius = 149.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6xes"]
+size = Vector2(10, 11)
 
 [node name="FrogEnemy" type="CharacterBody2D"]
 script = ExtResource("1_o2rti")
@@ -126,7 +139,8 @@ script = ExtResource("1_o2rti")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_kuu1p")
-animation = &"idle"
+animation = &"death"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 3)
@@ -137,4 +151,12 @@ shape = SubResource("RectangleShape2D_w0xfu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_r6w3d")
 
+[node name="PlayerDeath" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_w6xes")
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]
